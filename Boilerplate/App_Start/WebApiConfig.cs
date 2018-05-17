@@ -26,8 +26,10 @@ namespace Boilerplate
 
         private static void EnableCors(HttpConfiguration config)
         {
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
+            //var cors = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors(cors);
+
+            config.EnableCors();
         }
     }
 }
