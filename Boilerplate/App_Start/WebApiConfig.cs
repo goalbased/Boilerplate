@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using Boilerplate.Factories;
 
 namespace Boilerplate
 {
@@ -29,6 +30,9 @@ namespace Boilerplate
             //var cors = new EnableCorsAttribute("*", "*", "*");
             //config.EnableCors(cors);
 
+            //config.EnableCors();
+
+            config.SetCorsPolicyProviderFactory(new ApiCorsPolicyFactory());
             config.EnableCors();
         }
     }
