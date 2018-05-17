@@ -17,11 +17,12 @@ namespace Boilerplate.Attributes
             _policy = new CorsPolicy
             {
                 AllowAnyMethod = true,
-                AllowAnyHeader = true
+                AllowAnyHeader = true,
+                AllowAnyOrigin = true
             };
 
-            _policy.Origins.Add("http://localhost:4000");
-            _policy.Origins.Add("http://localhost:5000");
+            //_policy.Origins.Add("http://localhost:4000");
+            //_policy.Origins.Add("http://localhost:5000");
         }
 
         public Task<CorsPolicy> GetCorsPolicyAsync(HttpRequestMessage request, CancellationToken cancellationToken)
