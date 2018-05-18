@@ -7,12 +7,20 @@ namespace Boilerplate.Controllers
     //[ApiCorsPolicy]
     public class TestController : ApiController
     {
-        public string Get(string value)
+        [HttpPost]
+        public string Post1([FromBody] string value)
         {
-            return value + DateTime.Now;
+            return "Post1" + value;
         }
 
-        public string Post([FromBody] string value)
+        [HttpPost]
+        public string Post2([FromBody] string value)
+        {
+            return "Post2" + value;
+        }
+
+        [HttpGet]
+        public string Name(string value)
         {
             return value + DateTime.Now;
         }
