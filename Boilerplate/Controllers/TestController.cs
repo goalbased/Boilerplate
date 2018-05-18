@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.Http;
-using Boilerplate.Attributes;
+using Boilerplate.Exceptions;
 
 namespace Boilerplate.Controllers
 {
@@ -23,6 +23,12 @@ namespace Boilerplate.Controllers
         public string Name(string value)
         {
             return value + DateTime.Now;
+        }
+
+        [HttpGet]
+        public string Exception()
+        {
+            throw new CustomException();
         }
     }
 }

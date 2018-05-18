@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.ExceptionHandling;
 using Boilerplate.Factories;
+using Boilerplate.Handlers.Exception;
 
 namespace Boilerplate
 {
@@ -17,6 +19,8 @@ namespace Boilerplate
             config.MapHttpAttributeRoutes();
 
             EnableCors(config);
+
+            ReplaceExceptionHandler(config);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -34,6 +38,12 @@ namespace Boilerplate
 
             config.SetCorsPolicyProviderFactory(new ApiCorsPolicyFactory());
             config.EnableCors();
+        }
+
+        private static void ReplaceExceptionHandler(HttpConfiguration config)
+        {
+            config.Services.Replace(typeof(IExceptionHandler), new ApiExceptionHandler());
+            config.Services.Replace(typeof(IExceptionLogger), new ApiExceptionLogger());
         }
     }
 }
