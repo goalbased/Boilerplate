@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.ExceptionHandling;
 using Boilerplate.Factories;
+using Boilerplate.Handlers;
 using Boilerplate.Handlers.Exception;
 
 namespace Boilerplate
@@ -18,6 +19,8 @@ namespace Boilerplate
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            AddApiResponseHandler(config);
+
             EnableCors(config);
 
             ReplaceExceptionHandler(config);
@@ -27,6 +30,11 @@ namespace Boilerplate
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+        }
+
+        private static void AddApiResponseHandler(HttpConfiguration config)
+        {
+            config.MessageHandlers.Add(new ApiResponseHandler());
         }
 
         private static void EnableCors(HttpConfiguration config)
