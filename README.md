@@ -8,3 +8,7 @@ Multiple actions were found that match the request in Web Api
 
 
 https://stackoverflow.com/questions/14534167/multiple-actions-were-found-that-match-the-request-in-web-api?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+## ApiExceptionHandler
+
+https://stackoverflow.com/questions/24189315/exceptions-in-asp-net-web-api-custom-exception-handler-never-reach-top-level-whe/24634485#24634485
