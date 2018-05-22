@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Web.Http;
+using Boilerplate.Attributes;
+using Boilerplate.Controllers.Test.DTO;
 using Boilerplate.Exceptions;
 
-namespace Boilerplate.Controllers
+namespace Boilerplate.Controllers.Test
 {
     //[ApiCorsPolicy]
     public class TestController : ApiController
     {
+        [ValidateModelState]
         [HttpPost]
-        public string Post1([FromBody] string value)
+        public IHttpActionResult Post1(Post1Input input)
         {
-            return "Post1" + value;
+            var output = new Post1Output
+            {
+                Result = "test " + input.Name,
+                DateTime = DateTime.Now
+            };
+
+            return Ok(output);
         }
 
         [HttpPost]

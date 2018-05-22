@@ -185,9 +185,11 @@
     <Compile Include="App_Start\Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="App_Start\Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Attributes\ApiCorsPolicyAttribute.cs" />
+    <Compile Include="Attributes\ValidateModelStateAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\Test\DTO\Post1Output.cs" />
+    <Compile Include="Controllers\Test\DTO\Post1Input.cs" />
+    <Compile Include="Controllers\Test\TestController.cs" />
     <Compile Include="Exceptions\CustomException.cs" />
     <Compile Include="Exceptions\ExceptionCode.cs" />
     <Compile Include="Factories\ApiCorsPolicyFactory.cs" />

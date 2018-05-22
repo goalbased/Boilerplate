@@ -11,6 +11,7 @@ namespace Boilerplate.Exceptions
         WrongPassword,
         AccountBlocked,
         AccountNameDuplicate,
+        InvalidateInput = 9000,
         SystemError = 9999
     }
 }
