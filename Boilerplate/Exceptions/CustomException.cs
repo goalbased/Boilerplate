@@ -9,7 +9,7 @@ namespace Boilerplate.Exceptions
     public class CustomException : Exception
     {
         public ExceptionCode ExceptionCode { get; set; }
-        public List<string> MessageParamters { get; set; }
+        public List<string> MessageParamters = new List<string>();
 
         public CustomException()
         {

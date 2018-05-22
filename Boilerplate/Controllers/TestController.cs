@@ -28,8 +28,10 @@ namespace Boilerplate.Controllers
         [HttpGet]
         public string Exception()
         {
-            throw  new Exception();
-            throw new CustomException(ExceptionCode.AccountBlocked);
+            //throw  new Exception();
+            //account blocked, try 30 mins later
+            //only return the error code 1002(AccountBlocked) and a "30" string to frontend in production env but in devlopment env will return one more field "message" for esaily debug
+            throw new CustomException(ExceptionCode.AccountBlocked, "30");
         }
     }
 }
