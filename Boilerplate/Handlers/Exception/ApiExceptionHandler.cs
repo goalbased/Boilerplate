@@ -1,10 +1,14 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
+using Boilerplate.Exceptions;
+using Boilerplate.Models.Generic;
+using Newtonsoft.Json;
 
 namespace Boilerplate.Handlers.Exception
 {
@@ -18,31 +22,66 @@ namespace Boilerplate.Handlers.Exception
         }
     }
 
-    public class ApiExceptionHandler : IExceptionHandler
+    public class ApiExceptionHandler : ExceptionHandler
     {
-        public Task HandleAsync(ExceptionHandlerContext context, CancellationToken cancellationToken)
+        public override void Handle(ExceptionHandlerContext context)        
         {
-            context.Result = new TextPlainErrorResult
+            if (context.Exception is CustomException exception)
             {
-                Request = context.ExceptionContext.Request,
-                Content = "This is generic exception response"
-            };
+                var response = new ApiResponse
+                {
+                    IsSuccess = false,
+                    Error = new Error
+                    {
+                        Id = (int)exception.ExceptionCode,
+                        Message = exception.ExceptionCode.ToString(),
+                        MessageParameters = exception.MessageParamters
+                    }
+                };
 
-            return Task.FromResult(0);
+                context.Result = new ApiErrorResult
+                {
+                    HttpStatusCode = HttpStatusCode.OK,
+                    Request = context.ExceptionContext.Request,
+                    Content = JsonConvert.SerializeObject(response)
+                };
+            }
+            else
+            {
+                var response = new ApiResponse
+                {
+                    IsSuccess = false,
+                    Error = new Error
+                    {
+                        Id = (int)ExceptionCode.SystemError,
+                        Message = context.Exception.ToString()
+                    }
+                };
+
+                context.Result = new ApiErrorResult
+                {
+                    HttpStatusCode = HttpStatusCode.OK,
+                    Request = context.ExceptionContext.Request,
+                    Content = JsonConvert.SerializeObject(response)
+                };
+            }
         }
     }
 
-    internal class TextPlainErrorResult : IHttpActionResult
+    internal class ApiErrorResult : IHttpActionResult
     {
         public HttpRequestMessage Request { get; set; }
 
         public string Content { get; set; }
+
+        public HttpStatusCode HttpStatusCode { get; set; }
 
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
             var response =
                 new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
+                    StatusCode = HttpStatusCode,
                     Content = new StringContent(Content),
                     RequestMessage = Request
                 };

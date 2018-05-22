@@ -1,4 +1,6 @@
-﻿namespace Boilerplate.Models.Generic
+﻿using System.Collections.Generic;
+
+namespace Boilerplate.Models.Generic
 {
     public class ApiResponse
     {
@@ -12,6 +14,6 @@
     {
         public int Id { get; set; }
         public string Message { get; set; }
-        public string Details { get; set; }
+        public List<string> MessageParameters { get; set; }
     }
 }

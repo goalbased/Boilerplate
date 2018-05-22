@@ -28,7 +28,8 @@ namespace Boilerplate.Controllers
         [HttpGet]
         public string Exception()
         {
-            throw new CustomException();
+            throw  new Exception();
+            throw new CustomException(ExceptionCode.AccountBlocked);
         }
     }
 }
