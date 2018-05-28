@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boilerplate", "Boilerplate\Boilerplate.csproj", "{7DC3C118-63B1-4E30-8BF2-2433D3FA10C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bolierplate.Repository", "Bolierplate.Repository\Bolierplate.Repository.csproj", "{20536965-33EB-478D-844F-D522E48406B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{5008D773-6C7F-4F9B-B204-813885EDF6A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boilerplate.Repository.Test", "Boilerplate.Repository.Test\Boilerplate.Repository.Test.csproj", "{EC4F9ED0-F7B2-4F17-AFB9-2CCE14824765}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,21 @@ Global
 		{7DC3C118-63B1-4E30-8BF2-2433D3FA10C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DC3C118-63B1-4E30-8BF2-2433D3FA10C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DC3C118-63B1-4E30-8BF2-2433D3FA10C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20536965-33EB-478D-844F-D522E48406B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20536965-33EB-478D-844F-D522E48406B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20536965-33EB-478D-844F-D522E48406B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20536965-33EB-478D-844F-D522E48406B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC4F9ED0-F7B2-4F17-AFB9-2CCE14824765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4F9ED0-F7B2-4F17-AFB9-2CCE14824765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4F9ED0-F7B2-4F17-AFB9-2CCE14824765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4F9ED0-F7B2-4F17-AFB9-2CCE14824765}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{20536965-33EB-478D-844F-D522E48406B0} = {5008D773-6C7F-4F9B-B204-813885EDF6A7}
+		{EC4F9ED0-F7B2-4F17-AFB9-2CCE14824765} = {5008D773-6C7F-4F9B-B204-813885EDF6A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {070A7B65-8E05-45B5-B4C4-FC6BDC163069}

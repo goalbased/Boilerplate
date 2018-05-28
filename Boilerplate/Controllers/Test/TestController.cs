@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.Http;
 using Boilerplate.Attributes;
 using Boilerplate.Controllers.Test.DTO;
 using Boilerplate.Exceptions;
+using Bolierplate.Repository;
 
 namespace Boilerplate.Controllers.Test
 {
@@ -41,6 +44,16 @@ namespace Boilerplate.Controllers.Test
             //account blocked, try 30 mins later
             //only return the error code 1002(AccountBlocked) and a "30" string to frontend in production env but in devlopment env will return one more field "message" for esaily debug
             throw new CustomException(ExceptionCode.AccountBlocked, "30");
+        }
+
+        [HttpGet]
+        public IHttpActionResult Database()
+        {
+            var db = new BolierplateDbContext();
+
+            var result = db.Tests.Find();
+
+            return Ok(result);
         }
     }
 }
